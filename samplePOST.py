@@ -30,9 +30,9 @@ def ml_api():
     # headers = {
     #   'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:55.0) Gecko/20100101 Firefox/55.0',
     # }
-    pload = {["2022-11-20", "Saudi Arabia", "France"]}
-    r = requests.post('https://us-central1-aiplatform.googleapis.com/v1beta1/projects/hackwestern9/locations/us-central1/endpoints/00000000:predict', params=pload)
-
+    # pload = {["2022-11-20", "Saudi Arabia", "France", "Friendly", "London", "FALSE"]}
+    pload = {"name":"Test"}
+    r = requests.get('https://us-central1-aiplatform.googleapis.com/v1beta1/projects/disco-charger-369115/locations/us-central1/endpoints/4888134027975852032:predict', params=pload)
 
     print(r.text)
 

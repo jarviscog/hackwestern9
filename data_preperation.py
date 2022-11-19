@@ -39,7 +39,7 @@ def main():
 
 
     with open('results_modified_without_scores.csv', 'w') as f:
-        f.write("date,home_team,away_team,home_score,away_score,tournament,city,country,neutral,home_win\n")
+        f.write("date,home_team,away_team,tournament,city,country,neutral,home_win\n")
         for entry in entries:
             f.write(entry[0] + "," + entry[1] + "," + entry[2] + "," + entry[5] + "," + entry[6] + "," + entry[7] + "," + entry[8] + "," + entry[9] + "\n")
 

@@ -1,58 +1,45 @@
+import React, { useState, useEffect } from "react";
+import Preloader from "../src/components/Pre";
+import Navbar from "./components/Navbar";
+import Home from "./components/Home/Home";
+import Footer from "./components/Footer";
 
-import React, { useState } from "react";
-import './App.css';
-import {useRef} from 'react';
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate
+} from "react-router-dom";
+import ScrollToTop from "./components/ScrollToTop";
+import "./style.css";
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-const styles = {
-   header: {
-      backgroundImage:  "background.jpg"
-    }
+function App() {
+  const [load, upadateLoad] = useState(true);
 
-}
-function StartBtn(props) { 
-       return <button> {props.text} </button>
-}
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      upadateLoad(false);
+    }, 1200);
 
-
-
-
-const App = () => {
-  const ref = useRef(null);
-
-  const handleClick = () => {
-    ref.current?.scrollIntoView({behavior: 'smooth'});
-  } 
-   
-  const name = ""
-  const issomeone = true; 
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
-    <div  className="App"  >
-        <div style = { styles.header}>  
-        
-        </div>
-        <h1> Hello, Welcome to SportzML{issomeone ? name : 'someone'}</h1>
-        <button onClick={handleClick}> Scroll to element</button>
-        <div className = "search"> 
-        <input placeholder = "Search teams" /> 
-        </div>
-
-        
-        
-        
-        <div ref={ref}>Some content here</div>
-
-
-
-
-    </div>
-    
+    <Router>
+      <Preloader load={load} />
+      <div className="App" id={load ? "no-scroll" : "scroll"}>
+        <Navbar />
+        <ScrollToTop />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="*" element={<Navigate to="/"/>} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   );
 }
-
-
-
-
-
 
 export default App;

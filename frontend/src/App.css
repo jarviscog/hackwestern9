@@ -3,6 +3,7 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i");
 
 .app {
+  height: 50em;
   padding: 4rem;
   text-align: center;
   display: flex;
@@ -56,6 +57,18 @@
   cursor: pointer;
 }
 
+.start-btn { 
+  padding: 10px 30px;
+  cursor: pointer;
+  opacity: 0.6;
+  background: white;
+  border: 0;
+  outline: 0;
+  border-bottom: 2px solid transparent;
+  transition: ease border-bottom 250ms;
+  
+}
+
 /* .search button {
   padding: 20px 40px;
   border-radius: 0.5rem;
@@ -91,13 +104,20 @@
 }
 
 
-
-
-
-
 body {
   font-family: var(--font-roboto);
   background-color: #212426;
+  background-image: url('background.jpg');
+  background-repeat: no-repeat;
+  background-size:cover;
+  height: 300px;
+  padding: 4rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  
 }
 
 

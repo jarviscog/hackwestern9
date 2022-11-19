@@ -49,9 +49,9 @@ function Home() {
             </Col>
 
             <Col> 
-          <Button className = "like-btn animate-like" variant="outline-primary" onClick={handleClick}>Get Started</Button>
+          
                 
-          <div ref={ref}  > </div> 
+          <div  > Some thing </div> 
           </Col> 
             
           </Row>
@@ -61,7 +61,7 @@ function Home() {
 
       
       </Container>
-      < Home2 /> 
+      < Home2 ref={ref}  /> 
     </section>
   );
 }

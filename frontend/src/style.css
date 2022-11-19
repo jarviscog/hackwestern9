@@ -400,8 +400,11 @@ button:focus {
 
 .start-btn { 
   color: rgb(191, 15, 191)
-  
-  
+}
+
+.block { 
+  border-radius: 5px;
+  background-color: pink;
 }
 
 /* --------- */

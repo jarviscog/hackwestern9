@@ -1,10 +1,24 @@
 from flask import Flask, request
+from pprint import pprint
 
 app = Flask(__name__)
+
 
 @app.route('/', methods=['POST'])
 def result():
     print("Works!")
-    print(request.data)  # raw data
-    print(request.json)  # json (if content-type of application/json is sent with the request)
-    print(request.get_json(force=True))  # json (if content-type of application/json is not sent)
+    # Gets arguments from the url
+    team1 = request.args.get('teamone')
+    team2 = request.args.get('teamtwo')
+    print(team1, " VS. ", team2)
+
+    # Use these to send back data on how the teams are doing
+    
+
+
+    return "Hello"
+
+
+@app.route('/hello')
+def hello_world():
+    return 'Hello, World!'

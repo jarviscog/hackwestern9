@@ -168,9 +168,9 @@ function Home2() {
         <h1 style={{ color: "white" }}>You selected {value2} </h1>
         <Button onClick={() => calculate()} style={{ margin: "30px" }} variant="info">Calculate</Button>
         <div > 
-        <h2 style={{ color: "white" }} > Team one has a {sets.loss}% Loss percentage </h2>
-        <h2 style={{ color: "white" }} > Team one has a {sets.win}% Win percentage </h2>
-        <h2 style={{ color: "white" }} > Team one has a {sets.tie}% Tie percentage </h2>
+        <h2 style={{ color: "white" }} > Team one has a {sets.loss}% chance of losing </h2>
+        <h2 style={{ color: "white" }} > Team one has a {sets.win}% chance of winning </h2>
+        <h2 style={{ color: "white" }} > Team one has a {sets.tie}% of tying </h2>
         </div>
         <div ref={service} ></div>
       </Container>

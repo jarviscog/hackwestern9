@@ -68,7 +68,7 @@ function Upcoming() {
             <h4 style={{float: "right", margin:"25px"}}>Ecuador</h4>
             <h4 style={{display: "inline", marginLeft: "30px"}}>{GetPercentage("Qatar", "Ecuador", 1)}%</h4>
             <p>Al Bayt Staidum</p>
-            <ProgressBar style={{float: "left", height: "80px", width: "100%", marginTop: "-80px", opacity:"15%", borderRadius: "3rem"}}>
+            <ProgressBar style={{float: "left", height: "80px", width: "100%", marginTop: "-80px", opacity:"20%", borderRadius: "3rem"}}>
                 <ProgressBar striped variant="success" now={GetPercentage("Qatar", "Ecuador", 1)} key={1} />
                 <ProgressBar variant="warning" now={GetPercentage("Qatar", "Ecuador", 0.5)} key={2} />
                 <ProgressBar striped variant="danger" now={GetPercentage("Qatar", "Ecuador", 0)} key={3} />
@@ -95,7 +95,7 @@ function Upcoming() {
             <h4 style={{float: "right", margin:"25px"}}>Iran</h4>
             <h4 style={{display: "inline", marginRight: "50px"}}>{GetPercentage("England", "Iran", 1)}%</h4>
             <p>Khalifa International Staidum</p>
-            <ProgressBar style={{float: "left", height: "80px", width: "100%", marginTop: "-80px", opacity:"15%", borderRadius: "3rem"}}>
+            <ProgressBar style={{float: "left", height: "80px", width: "100%", marginTop: "-80px", opacity:"20%", borderRadius: "3rem"}}>
                 <ProgressBar striped variant="success" now={GetPercentage("England", "Iran", 1)} key={1} />
                 <ProgressBar variant="warning" now={GetPercentage("England", "Iran", 0.5)} key={2} />
                 <ProgressBar striped variant="danger" now={GetPercentage("England", "Iran", 0)} key={3} />
@@ -122,7 +122,7 @@ function Upcoming() {
             <h4 style={{float: "right", margin:"25px"}}>Wales</h4>
             <h4 style={{display: "inline", marginLeft: "20px"}}>{GetPercentage("USA", "Wales", 1)}%</h4>
             <p>Al Rayyan Staidum</p>
-            <ProgressBar style={{float: "left", height: "80px", width: "100%", marginTop: "-80px", opacity:"15%", borderRadius: "3rem"}}>
+            <ProgressBar style={{float: "left", height: "80px", width: "100%", marginTop: "-80px", opacity:"20%", borderRadius: "3rem"}}>
                 <ProgressBar striped variant="success" now={GetPercentage("USA", "Wales", 1)} key={1} />
                 <ProgressBar variant="warning" now={GetPercentage("USA", "Wales", 0.5)} key={2} />
                 <ProgressBar striped variant="danger" now={GetPercentage("USA", "Wales", 0)} key={3} />

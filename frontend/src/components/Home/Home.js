@@ -4,17 +4,18 @@ import homeLogo from "../../Assets/soccer.png";
 import Particle from "../Particle";
 import Home2 from "./projection";
 import Type from "./Type";
-import Button from 'react-bootstrap/Button';
+
 import Upcoming from "./upcoming";
 
 
 function Home() {
-
+  
   return (
-    <section>
+      <section>
       
       <Container fluid className="home-section" id="home">
         <Particle />
+        
         <Container className="home-content">
           <Row>
             <Col md={7} className="home-header">
@@ -23,17 +24,17 @@ function Home() {
                 WELCOME TO  
                 <strong className="main-name"> MIRAI9</strong>
               </h1>
-
+              
               <div style={{ padding: 50, textAlign: "left" }}>
                 <Type />
       
               </div>
               <div style={{ padding: 60, textAlign: "left" }}>
-              
-              <Button variant="primary" >Get Started</Button>
+
               </div> 
               
             </Col>
+            
 
             <Col md={5} style={{ paddingBottom: 20 }}>
               <img
@@ -49,11 +50,18 @@ function Home() {
           </Col> 
             
           </Row>
+          
+        </Container>
+        <Container>
+        
         </Container>
        
       </Container>
+     
       < Home2  /> 
       < Upcoming /> 
+      
+      <div  style = {{height:"100px"} }></div>
     </section>
   );
   

@@ -3,55 +3,22 @@ import { Container, Row, Col } from "react-bootstrap";
 import Dropdown from 'react-bootstrap/Dropdown';
 import Button from 'react-bootstrap/Button';
 
-
-// function CallHttp(prop1, prop2, prop3) {
-
-//   const [posts, setPosts] = useState([]);
-//   useEffect(() => {
-
-//      fetch(`http://172.30.37.67:3000/?teamone=${prop1}&teamtwo=${prop2}`)
-//        .then((res) => res.json())
-//        .then((data) => {
-//            console.log(data);
-//            setPosts(data);
-//        })
-//        .catch((err) => {
-//            console.log(err.message);
-//        });
-
-//    },[]);  
-//    var calledSet = {
-//     loss: Number(posts[0]).toFixed(2)*100,
-//     win: Number(posts[1]).toFixed(2)*100,
-//     tie: Number(posts[2]).toFixed(3)*100
-//   };
-//     // if (prop3 == 0) {
-//     //   return (calledSet.loss)}
-//     // else if (prop3 == 1) { 
-//     //   return (calledSet.win)
-//     // }
-//     // else { 
-//     //   return (calledSet.tie)
-//     //}
-//     return ( 
-//       <div > <h2 style={{color:"white"}} > Team one has a {calledSet.loss}% Loss percentage </h2>
-//               <h2 style={{color:"white"}} > Team one has a {calledSet.win}% Win percentage </h2>
-//               <h2 style={{color:"white"}} > Team one has a {calledSet.tie}% Tie percentage </h2>
-//        </div>
-//     )
-
-//        } 
-
-
-
 function Home2() {
+  const service = useRef(null)
+  const scrollToSec = (elementRef) => { 
+    console.log("Hi")
+    window.scrollTo( { 
+    top: elementRef.current.offsetTop, 
+    behaviour: "smooth",
+    });
+  } 
 
-
+  
   const [value, setValue] = useState('');
   const [value2, setValue2] = useState('');
   const [sets, setSets] = useState({})
 
-  
+ 
   const handleSelect = (e) => {
     console.log(e);
     setValue(e)
@@ -83,6 +50,13 @@ function Home2() {
   return (
 
     <Container fluid className="home-about-section" id="about">
+     <Button onClick= {() => scrollToSec(service)}  style={{
+      float:"left",
+      marginTop: "-300px", 
+      marginLeft: "200px",
+      padding: '20px',  
+      fontSize: '25px', 
+      fontWeight:'bold'}} variant="primary" >Get Started</Button>
       {/* =========== The Title ==========*/}
       <Container>
         <Row>
@@ -190,14 +164,15 @@ function Home2() {
           </Col>
         </Row>
 
-        <h1 style={{ color: "white" }}>You selected {value} C1</h1>
-        <h1 style={{ color: "white" }}>You selected {value2} C2</h1>
+        <h1 style={{ color: "white" }}>You selected {value} </h1>
+        <h1 style={{ color: "white" }}>You selected {value2} </h1>
         <Button onClick={() => calculate()} style={{ margin: "30px" }} variant="info">Calculate</Button>
         <div > 
         <h2 style={{ color: "white" }} > Team one has a {sets.loss}% Loss percentage </h2>
-          <h2 style={{ color: "white" }} > Team one has a {sets.win}% Win percentage </h2>
-          <h2 style={{ color: "white" }} > Team one has a {sets.tie}% Tie percentage </h2>
+        <h2 style={{ color: "white" }} > Team one has a {sets.win}% Win percentage </h2>
+        <h2 style={{ color: "white" }} > Team one has a {sets.tie}% Tie percentage </h2>
         </div>
+        <div ref={service} ></div>
       </Container>
 
     </Container>

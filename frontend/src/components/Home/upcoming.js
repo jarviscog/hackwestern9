@@ -10,7 +10,7 @@ import walesFlag from "../../Assets/wales.png";
 import ProgressBar from 'react-bootstrap/ProgressBar';
 
 
-function GetPercentage(team1, team2){
+function GetPercentage(team1, team2, stat){
     const [posts, setPosts] = useState([]);
     let url = "http://172.30.37.67:3000/?teamone=" + team1 + "&teamtwo=" + team2
     useEffect(() => {
@@ -24,7 +24,16 @@ function GetPercentage(team1, team2){
              console.log(err.message);
           });
     }, []);
-    return Number(posts['1']).toFixed(2) * 100;
+    if(stat == 0){
+        return Number(posts['0']).toFixed(2) * 100;
+    }
+    if(stat == 1){
+        return Number(posts['1']).toFixed(2) * 100;
+    }
+    if(stat == 0.5){
+        return Number(posts['0.5']).toFixed(2) * 100;
+    }
+    
 }
 
 function Upcoming() {
@@ -57,9 +66,13 @@ function Upcoming() {
               />
             <h4 style={{float: "left", margin:"25px"}}>Qatar</h4>
             <h4 style={{float: "right", margin:"25px"}}>Ecuador</h4>
-            <h4 style={{display: "inline", marginLeft: "30px"}}>{GetPercentage("Qatar", "Ecuador")}%</h4>
+            <h4 style={{display: "inline", marginLeft: "30px"}}>{GetPercentage("Qatar", "Ecuador", 1)}%</h4>
             <p>Al Bayt Staidum</p>
-            <ProgressBar striped variant="success" animated now={GetPercentage("Qatar", "Ecuador")} style={{float: "left", height: "80px", width: "100%", marginTop: "-80px", opacity:"15%", borderRadius: "3rem"}}/>
+            <ProgressBar style={{float: "left", height: "80px", width: "100%", marginTop: "-80px", opacity:"15%", borderRadius: "3rem"}}>
+                <ProgressBar striped variant="success" now={GetPercentage("Qatar", "Ecuador", 1)} key={1} />
+                <ProgressBar variant="warning" now={GetPercentage("Qatar", "Ecuador", 0.5)} key={2} />
+                <ProgressBar striped variant="danger" now={GetPercentage("Qatar", "Ecuador", 0)} key={3} />
+            </ProgressBar>
         </div>
         </Col>
        </Row>
@@ -80,9 +93,13 @@ function Upcoming() {
               />
             <h4 style={{float: "left", margin:"25px"}}>England</h4>
             <h4 style={{float: "right", margin:"25px"}}>Iran</h4>
-            <h4 style={{display: "inline", marginRight: "50px"}}>{GetPercentage("England", "Iran")}%</h4>
+            <h4 style={{display: "inline", marginRight: "50px"}}>{GetPercentage("England", "Iran", 1)}%</h4>
             <p>Khalifa International Staidum</p>
-            <ProgressBar striped variant="success" animated now={GetPercentage("England", "Iran")} style={{float: "left", height: "80px", width: "100%", marginTop: "-80px", opacity:"15%", borderRadius: "3rem"}}/>
+            <ProgressBar style={{float: "left", height: "80px", width: "100%", marginTop: "-80px", opacity:"15%", borderRadius: "3rem"}}>
+                <ProgressBar striped variant="success" now={GetPercentage("England", "Iran", 1)} key={1} />
+                <ProgressBar variant="warning" now={GetPercentage("England", "Iran", 0.5)} key={2} />
+                <ProgressBar striped variant="danger" now={GetPercentage("England", "Iran", 0)} key={3} />
+            </ProgressBar>
         </div>
         </Col>
        </Row>
@@ -103,9 +120,13 @@ function Upcoming() {
               />
             <h4 style={{float: "left", margin:"25px"}}>USA</h4>
             <h4 style={{float: "right", margin:"25px"}}>Wales</h4>
-            <h4 style={{display: "inline", marginLeft: "20px"}}>{GetPercentage("USA", "Wales")}%</h4>
+            <h4 style={{display: "inline", marginLeft: "20px"}}>{GetPercentage("USA", "Wales", 1)}%</h4>
             <p>Al Rayyan Staidum</p>
-            <ProgressBar striped variant="success" animated now={GetPercentage("USA", "Wales")} style={{float: "left", height: "80px", width: "100%", marginTop: "-80px", opacity:"15%", borderRadius: "3rem"}}/>
+            <ProgressBar style={{float: "left", height: "80px", width: "100%", marginTop: "-80px", opacity:"15%", borderRadius: "3rem"}}>
+                <ProgressBar striped variant="success" now={GetPercentage("USA", "Wales", 1)} key={1} />
+                <ProgressBar variant="warning" now={GetPercentage("USA", "Wales", 0.5)} key={2} />
+                <ProgressBar striped variant="danger" now={GetPercentage("USA", "Wales", 0)} key={3} />
+            </ProgressBar>
         </div>
         </Col>
        </Row>

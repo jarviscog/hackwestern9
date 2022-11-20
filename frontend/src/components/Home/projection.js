@@ -1,25 +1,54 @@
 import {React, useRef, useState, useEffect} from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Dropdown from 'react-bootstrap/Dropdown';
+import Button from 'react-bootstrap/Button';
+
+
+function CallHttp(prop1, prop2, prop3) {
+  
+  const [posts, setPosts] = useState([]);
+  useEffect(() => {
+     
+     fetch(`http://172.30.37.67:3000/?teamone=${prop1}&teamtwo=${prop2}`)
+       .then((res) => res.json())
+       .then((data) => {
+           console.log(data);
+           setPosts(data);
+       })
+       .catch((err) => {
+           console.log(err.message);
+       });
+       
+   },[]);  
+   var calledSet = {
+    loss: Number(posts[0]).toFixed(2)*100,
+    win: Number(posts[1]).toFixed(2)*100,
+    tie: Number(posts[2]).toFixed(2)*100
+  };
+    // if (prop3 == 0) {
+    //   return (calledSet.loss)}
+    // else if (prop3 == 1) { 
+    //   return (calledSet.win)
+    // }
+    // else { 
+    //   return (calledSet.tie)
+    //}
+    return ( 
+      <div > <h2 style={{color:"white"}} > Team one has a {calledSet.loss}% Loss percentage </h2>
+              <h2 style={{color:"white"}} > Team one has a {calledSet.win}% Win percentage </h2>
+              <h2 style={{color:"white"}} > Team one has a {calledSet.tie}% Tie percentage </h2>
+       </div>
+    )
+
+       } 
+
+
+
+
 
 
 function Home2() {
-  
-  const [posts, setPosts] = useState([]);
-
-    useEffect(() => {
-      fetch('http://172.30.37.67:3000/?teamone=${value}&teamtwo=Scotland')
-         .then((res) => res.json())
-         .then((data) => {
-            console.log(data);
-            setPosts(data);
-         })
-         .catch((err) => {
-            console.log(err.message);
-         });
-         
-    }, 
-    []);
+    
     
     const [value,setValue] = useState('');
     const [value2,setValue2] = useState('');
@@ -32,13 +61,14 @@ function Home2() {
       console.log(e);
       setValue2(e)
     }
+    
   
   
 
   return (
     
     <Container fluid className="home-about-section" id="about">
-    {/* =========== The Title */}
+    {/* =========== The Title ==========*/}
       <Container>
         <Row>
         <div className = "container"> 
@@ -52,7 +82,7 @@ function Home2() {
       <Col className = "projBlock">
      
       <div>
-        <Dropdown onSelect={handleSelect} >
+        <Dropdown style = {{margin:"30px"}} onSelect={handleSelect} >
         <Dropdown.Toggle  variant="success" id="dropdown-menu">
           Country 1
         </Dropdown.Toggle>
@@ -98,7 +128,7 @@ function Home2() {
       </Col>
       <Col className = "projBlock">  
       <div>
-        <Dropdown onSelect={handleSelect2} >
+        <Dropdown style = {{margin:"30px"}} onSelect={handleSelect2} >
         <Dropdown.Toggle variant="success" id="dropdown-menu">
         Country 2
         </Dropdown.Toggle>
@@ -144,8 +174,11 @@ function Home2() {
 
       </Col>
        </Row>
-        <h1 style={{color:"white"}}>You selected {value}</h1>
-        <h1 style={{color:"white"}}>You selected {value2}</h1>
+        
+        <h1 style={{color:"white"}}>You selected {value} C1</h1>
+        <h1 style={{color:"white"}}>You selected {value2} C2</h1>
+        <Button onClick = {CallHttp} style={{margin:"30px"}} variant="info">Calculate</Button>
+        <CallHttp/>
       </Container> 
 
     </Container>

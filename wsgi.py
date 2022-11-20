@@ -1,16 +1,35 @@
+import json
+
 from flask import Flask, request
 from pprint import pprint
 
 app = Flask(__name__)
 
+from json import JSONEncoder
 
-@app.route('/', methods=['POST'])
+
+@app.route('/', methods=['GET'])
 def result():
-    print("Works!")
+
     # Gets arguments from the url
     team1 = request.args.get('teamone')
     team2 = request.args.get('teamtwo')
     print(team1, " VS. ", team2)
+
+    returnDict = {}
+
+
+
+
+
+
+    returnDict['homeTeamWinPercent'] = 0.6
+
+    jsonn = json.dumps(returnDict)
+    print(jsonn)
+    return jsonn
+
+
 
     # Use these to send back data on how the teams are doing
     

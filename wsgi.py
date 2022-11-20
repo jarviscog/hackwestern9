@@ -29,6 +29,11 @@ def result():
     #     '0.5':predictions[2]
     # }
 
+    # jsonn = {
+    #     '1':predictions[0],
+    #     '0':predictions[1],
+    #     '0.5':predictions[2]
+    # }
 
 
 

@@ -1,8 +1,7 @@
 import {React, useState} from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Dropdown from 'react-bootstrap/Dropdown';
-
-
+import Home from './Home'
 
 
 function Home2() {
@@ -13,9 +12,8 @@ function Home2() {
     console.log(e);
     setValue(e)
   }
+  console.log(Home.posts)
 
-  
- 
 
   return (
     

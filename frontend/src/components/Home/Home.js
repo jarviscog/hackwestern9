@@ -1,4 +1,4 @@
-import {React,useRef} from "react";
+import {React, useRef, useState, useEffect} from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import homeLogo from "../../Assets/soccer.png";
 import Particle from "../Particle";
@@ -8,14 +8,27 @@ import Button from 'react-bootstrap/Button';
 import Upcoming from "./upcoming";
 
 
-
+function callHttp() { 
+  const [posts, setPosts] = useState([]);
+  useEffect(() => {
+    fetch('http://172.30.37.67:3000/?teamone=Scotland&teamtwo=Scotland')
+       .then((res) => res.json())
+       .then((data) => {
+          console.log(data);
+          setPosts(data);
+       })
+       .catch((err) => {
+          console.log(err.message);
+       });
+       
+  }, 
+  []);
+  return (posts)
+}
 
 function Home() {
-  const ref = useRef(null);
   
-  const handleClick = () => {
-    ref.current?.scrollIntoView({behavior: 'smooth'});
-  } 
+  
   return (
     <section>
       <Container fluid className="home-section" id="home">
@@ -35,7 +48,7 @@ function Home() {
               </div>
               <div style={{ padding: 60, textAlign: "left" }}>
               
-              <Button className = "like-btn animate-like" variant="outline-primary" onClick={handleClick}>Get Started</Button>
+              <Button variant="primary" >Get Started</Button>
               </div> 
               
             </Col>
@@ -52,20 +65,21 @@ function Home() {
             <Col> 
           
             
-          <div  > Some thing </div> 
+          
           </Col> 
             
           </Row>
         </Container>
-
-      
-
        
       </Container>
-      < Home2 ref={ref}  /> 
+      < Home2  /> 
       < Upcoming /> 
     </section>
   );
+  
+  
+  
 }
+
 
 export default Home;

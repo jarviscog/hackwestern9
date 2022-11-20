@@ -8,6 +8,7 @@ import usaFlag from "../../Assets/usa.png";
 import walesFlag from "../../Assets/wales.png";
 import ProgressBar from 'react-bootstrap/ProgressBar';
 
+
 function getPercentage(){
     return 87;
 }

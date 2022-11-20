@@ -414,10 +414,11 @@ button:focus {
 }
 
 .upcomingGame {
-  height: 40px;
-  background-color: #1f2123;
+  height: 80px;
   border-radius: 3rem;
-  text-align: center;
+  background-color: #1f2123;
+  align-items: center;
+  opacity: 80%;
 }
 
 /* --------- */

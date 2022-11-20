@@ -1,31 +1,10 @@
-import json
-
 import requests
-import http.client
-
-
-# Copyright 2020 Google LLC
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     https://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
-# [START aiplatform_predict_tabular_classification_sample]
 from typing import Dict
 
 from google.cloud import aiplatform
+
 from google.protobuf import json_format
 from google.protobuf.struct_pb2 import Value
-
-
 
 
 def predict_tabular_classification_sample(
@@ -49,27 +28,37 @@ def predict_tabular_classification_sample(
     endpoint = client.endpoint_path(
         project=project, location=location, endpoint=endpoint_id
     )
+
     response = client.predict(
         endpoint=endpoint, instances=instances, parameters=parameters
     )
-    print("response")
-    print(" deployed_model_id:", response.deployed_model_id)
     # See gs://google-cloud-aiplatform/schema/predict/prediction/tabular_classification_1.0.0.yaml for the format of the predictions.
     predictions = response.predictions
     for prediction in predictions:
-        print(" prediction:", dict(prediction))
+        # print(" prediction:", dict(prediction))
+        return dict(prediction)
 
 
-# [END aiplatform_predict_tabular_classification_sample]
+def test_ucaip_generated_predict_tabular_classification_sample(capsys):
+
+    predict_tabular_classification_sample(
+        instance_dict=INSTANCE, project=PROJECT_ID, endpoint_id=ENDPOINT_ID
+    )
+
+    out, _ = capsys.readouterr()
+    print(out)
+    # assert 'setosa' in out
+
+
 
 def self():
 
     # headers = {
     #   'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:55.0) Gecko/20100101 Firefox/55.0',
     # }
-    pload = {'teamone':'Manchester', 'teamtwo':"Scotland"}
+    pload = {'teamone':'Italy', 'teamtwo':"Scotland"}
     r = requests.get('http://127.0.0.1:3000', params=pload)
-
+    print(r.request.url)
 
     print(r.text)
 
@@ -84,20 +73,38 @@ def self():
 #     data = res.read()
 #     print(data.decode("utf-8"))
 
-def ml_api():
+def ml_api(team1:str, team2:str):
 
-    # headers = {
-    #   'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:55.0) Gecko/20100101 Firefox/55.0',
-    # }
-    # pload = {["2022-11-20", "Saudi Arabia", "France", "Friendly", "London", "FALSE"]}
-    # jsonStr = json.dumps(instances)
+    ENDPOINT_ID = "1932365297537253376"
+    PROJECT_ID = "disco-charger-369115"
 
-    pload = {"instances":"Hello"}
+    instance = {
+        "home_team": "Germany",
+        "away_team": "India",
+        "country": "Germany",
+        "city": "Berlin",
+        "neutral": "FALSE",
+        "date": "2022-11-20",
+        "tournament": "Freindly"
+    }
 
-    r = requests.get('https://us-central1-aiplatform.googleapis.com/v1beta1/projects/disco-charger-369115/locations/us-central1/endpoints/4888134027975852032', params=pload)
+    instance['home_team'] = team1
+    instance['away_team'] = team2
 
-    print(r.text)
+    predictions = dict(predict_tabular_classification_sample(
+        instance_dict=instance, project=PROJECT_ID, endpoint_id=ENDPOINT_ID
+    ))
+    # print(predictions)
+    # print(predictions.get('scores'))
+    # print(predictions.get('scores')[0])
+    won = predictions.get('scores')[0]
+    lost = predictions.get('scores')[1]
+    tied = predictions.get('scores')[2]
+
+    return {'1':won, '0':lost, '0.5':tied}
+
 
 if __name__ == '__main__':
 
-    ml_api()
+    # predictions = ml_api("France", "Italy")
+    self()

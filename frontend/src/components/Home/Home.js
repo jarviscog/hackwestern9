@@ -1,4 +1,4 @@
-import {React,useRef} from "react";
+import {React, useRef, useState, useEffect} from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import homeLogo from "../../Assets/soccer.png";
 import Particle from "../Particle";
@@ -8,16 +8,11 @@ import Button from 'react-bootstrap/Button';
 import Upcoming from "./upcoming";
 
 
-
-
 function Home() {
-  const ref = useRef(null);
-  
-  const handleClick = () => {
-    ref.current?.scrollIntoView({behavior: 'smooth'});
-  } 
+
   return (
     <section>
+      
       <Container fluid className="home-section" id="home">
         <Particle />
         <Container className="home-content">
@@ -35,7 +30,7 @@ function Home() {
               </div>
               <div style={{ padding: 60, textAlign: "left" }}>
               
-              <Button className = "like-btn animate-like" variant="outline-primary" onClick={handleClick}>Get Started</Button>
+              <Button variant="primary" >Get Started</Button>
               </div> 
               
             </Col>
@@ -51,21 +46,20 @@ function Home() {
 
             <Col> 
           
-            
-          <div  > Some thing </div> 
           </Col> 
             
           </Row>
         </Container>
-
-      
-
        
       </Container>
-      < Home2 ref={ref}  /> 
+      < Home2  /> 
       < Upcoming /> 
     </section>
   );
+  
+  
+  
 }
+
 
 export default Home;

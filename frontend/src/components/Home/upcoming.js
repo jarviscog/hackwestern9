@@ -1,4 +1,5 @@
 import React from "react";
+import { useState, useEffect } from 'react';
 import { Container, Row, Col } from "react-bootstrap";
 import qatarFlag from "../../Assets/qatar.png";
 import ecuadorFlag from "../../Assets/ecuador.png";
@@ -9,7 +10,21 @@ import walesFlag from "../../Assets/wales.png";
 import ProgressBar from 'react-bootstrap/ProgressBar';
 
 
-function getPercentage(){
+function GetPercentage(team1, team2){
+    const [posts, setPosts] = useState([]);
+    let url = "http://172.30.37.67:3000/?teamone=" + team1 + "&teamtwo=" + team2
+    console.log(url)
+    useEffect(() => {
+       fetch(url)
+          .then((res) => res.json())
+          .then((data) => {
+             console.log(data);
+             setPosts(data);
+          })
+          .catch((err) => {
+             console.log(err.message);
+          });
+    }, []);
     return 87;
 }
 function getPercentage2(){
@@ -34,7 +49,6 @@ function Upcoming() {
         <Col style={{ margin: "10px"}}>
             
         <div className="upcomingGame">
-            
             <img
                 src={qatarFlag}
                 alt="qatar flag icon"
@@ -50,8 +64,9 @@ function Upcoming() {
               />
             <h4 style={{float: "left", margin:"25px"}}>Qatar</h4>
             <h4 style={{float: "right", margin:"25px"}}>Ecuador</h4>
-            <h4 style={{display: "inline", marginLeft: "30px"}}>{getPercentage()}%</h4>
-            <ProgressBar striped variant="success" animated now={getPercentage()} style={{float: "left", height: "80px", width: "100%", marginTop: "-80px", opacity:"15%", borderRadius: "3rem"}}/>
+            <h4 style={{display: "inline", marginLeft: "30px"}}>{GetPercentage("Qatar", "Ecuador")}%</h4>
+            <p>Al Bayt Staidum</p>
+            <ProgressBar striped variant="success" animated now={GetPercentage("Qatar", "Ecuador")} style={{float: "left", height: "80px", width: "100%", marginTop: "-80px", opacity:"15%", borderRadius: "3rem"}}/>
         </div>
         </Col>
        </Row>
@@ -73,6 +88,7 @@ function Upcoming() {
             <h4 style={{float: "left", margin:"25px"}}>England</h4>
             <h4 style={{float: "right", margin:"25px"}}>Iran</h4>
             <h4 style={{display: "inline", marginRight: "50px"}}>{getPercentage2()}%</h4>
+            <p>Khalifa International Staidum</p>
             <ProgressBar striped variant="success" animated now={getPercentage2()} style={{float: "left", height: "80px", width: "100%", marginTop: "-80px", opacity:"15%", borderRadius: "3rem"}}/>
         </div>
         </Col>
@@ -95,6 +111,7 @@ function Upcoming() {
             <h4 style={{float: "left", margin:"25px"}}>USA</h4>
             <h4 style={{float: "right", margin:"25px"}}>Wales</h4>
             <h4 style={{display: "inline", marginLeft: "20px"}}>{getPercentage3()}%</h4>
+            <p>Al Rayyan Staidum</p>
             <ProgressBar striped variant="success" animated now={getPercentage3()} style={{float: "left", height: "80px", width: "100%", marginTop: "-80px", opacity:"15%", borderRadius: "3rem"}}/>
         </div>
         </Col>

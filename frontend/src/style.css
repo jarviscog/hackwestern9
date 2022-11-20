@@ -626,3 +626,7 @@ button:focus {
 .fork-btn-inner::after {
   display: none !important;
 }
+
+/*
+*{outline: 2px solid rgba(245, 245, 245, 0.363);}
+*/

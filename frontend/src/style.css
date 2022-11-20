@@ -381,6 +381,9 @@ button:focus {
   transform: scale(1.1);
   box-shadow: 0 0 15px #801f95;
 }
+/* --------- */
+/* Footer */
+/* --------- */
 
 .home-social-icons:hover {
   color: #87209e;
@@ -419,6 +422,12 @@ button:focus {
   background-color: #1f2123;
   align-items: center;
   opacity: 80%;
+}
+
+
+.dropdown-menu { 
+  max-height: 100px;
+  overflow-y: auto;
 }
 
 /* --------- */

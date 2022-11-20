@@ -12,7 +12,7 @@ import Upcoming from "./upcoming";
 
 function Home() {
   const ref = useRef(null);
-
+  
   const handleClick = () => {
     ref.current?.scrollIntoView({behavior: 'smooth'});
   } 
@@ -34,7 +34,7 @@ function Home() {
       
               </div>
               <div style={{ padding: 60, textAlign: "left" }}>
-    
+              
               <Button className = "like-btn animate-like" variant="outline-primary" onClick={handleClick}>Get Started</Button>
               </div> 
               
@@ -51,7 +51,7 @@ function Home() {
 
             <Col> 
           
-                
+            
           <div  > Some thing </div> 
           </Col> 
             
@@ -60,7 +60,7 @@ function Home() {
 
       
 
-      
+       
       </Container>
       < Home2 ref={ref}  /> 
       < Upcoming /> 

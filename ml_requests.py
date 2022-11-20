@@ -39,18 +39,6 @@ def predict_tabular_classification_sample(
         return dict(prediction)
 
 
-def test_ucaip_generated_predict_tabular_classification_sample(capsys):
-
-    predict_tabular_classification_sample(
-        instance_dict=INSTANCE, project=PROJECT_ID, endpoint_id=ENDPOINT_ID
-    )
-
-    out, _ = capsys.readouterr()
-    print(out)
-    # assert 'setosa' in out
-
-
-
 def self():
 
     # headers = {
@@ -59,19 +47,8 @@ def self():
     pload = {'teamone':'Italy', 'teamtwo':"Scotland"}
     r = requests.get('http://127.0.0.1:3000', params=pload)
     print(r.request.url)
-
     print(r.text)
 
-
-# def sports_api():
-#
-#     # conn = http.client.HTTPSConnection("api.sportmonks.com")
-#     # payload = ''
-#     # headers = {}
-#     conn.request("GET", "https://api.football-data.org/v4/matches", payload, headers)
-#     res = conn.getresponse()
-#     data = res.read()
-#     print(data.decode("utf-8"))
 
 def ml_api(team1:str, team2:str):
 

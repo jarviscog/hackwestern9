@@ -8,29 +8,11 @@ import Button from 'react-bootstrap/Button';
 import Upcoming from "./upcoming";
 
 
-function callHttp() { 
-  const [posts, setPosts] = useState([]);
-  useEffect(() => {
-    fetch('http://172.30.37.67:3000/?teamone=Scotland&teamtwo=Scotland')
-       .then((res) => res.json())
-       .then((data) => {
-          console.log(data);
-          setPosts(data);
-       })
-       .catch((err) => {
-          console.log(err.message);
-       });
-       
-  }, 
-  []);
-  return (posts)
-}
-
 function Home() {
-  
-  
+
   return (
     <section>
+      
       <Container fluid className="home-section" id="home">
         <Particle />
         <Container className="home-content">
@@ -63,8 +45,6 @@ function Home() {
             </Col>
 
             <Col> 
-          
-            
           
           </Col> 
             

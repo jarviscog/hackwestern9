@@ -5,6 +5,7 @@ import Particle from "../Particle";
 import Home2 from "./projection";
 import Type from "./Type";
 import Button from 'react-bootstrap/Button';
+import Upcoming from "./upcoming";
 
 
 
@@ -62,6 +63,7 @@ function Home() {
       
       </Container>
       < Home2 ref={ref}  /> 
+      < Upcoming /> 
     </section>
   );
 }

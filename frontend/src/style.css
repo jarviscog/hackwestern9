@@ -407,6 +407,19 @@ button:focus {
   background-color: pink;
 }
 
+
+.upcoming {
+  color: white;
+  padding-bottom: 70px !important;
+}
+
+.upcomingGame {
+  height: 40px;
+  background-color: #1f2123;
+  border-radius: 3rem;
+  text-align: center;
+}
+
 /* --------- */
 /* Footer */
 /* --------- */

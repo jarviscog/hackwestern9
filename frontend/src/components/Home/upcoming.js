@@ -13,7 +13,6 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 function GetPercentage(team1, team2){
     const [posts, setPosts] = useState([]);
     let url = "http://172.30.37.67:3000/?teamone=" + team1 + "&teamtwo=" + team2
-    console.log(url)
     useEffect(() => {
        fetch(url)
           .then((res) => res.json())
@@ -25,13 +24,7 @@ function GetPercentage(team1, team2){
              console.log(err.message);
           });
     }, []);
-    return 87;
-}
-function getPercentage2(){
-    return 30;
-}
-function getPercentage3(){
-    return 69;
+    return Number(posts['1']).toFixed(2) * 100;
 }
 
 function Upcoming() {
@@ -87,9 +80,9 @@ function Upcoming() {
               />
             <h4 style={{float: "left", margin:"25px"}}>England</h4>
             <h4 style={{float: "right", margin:"25px"}}>Iran</h4>
-            <h4 style={{display: "inline", marginRight: "50px"}}>{getPercentage2()}%</h4>
+            <h4 style={{display: "inline", marginRight: "50px"}}>{GetPercentage("England", "Iran")}%</h4>
             <p>Khalifa International Staidum</p>
-            <ProgressBar striped variant="success" animated now={getPercentage2()} style={{float: "left", height: "80px", width: "100%", marginTop: "-80px", opacity:"15%", borderRadius: "3rem"}}/>
+            <ProgressBar striped variant="success" animated now={GetPercentage("England", "Iran")} style={{float: "left", height: "80px", width: "100%", marginTop: "-80px", opacity:"15%", borderRadius: "3rem"}}/>
         </div>
         </Col>
        </Row>
@@ -110,9 +103,9 @@ function Upcoming() {
               />
             <h4 style={{float: "left", margin:"25px"}}>USA</h4>
             <h4 style={{float: "right", margin:"25px"}}>Wales</h4>
-            <h4 style={{display: "inline", marginLeft: "20px"}}>{getPercentage3()}%</h4>
+            <h4 style={{display: "inline", marginLeft: "20px"}}>{GetPercentage("USA", "Wales")}%</h4>
             <p>Al Rayyan Staidum</p>
-            <ProgressBar striped variant="success" animated now={getPercentage3()} style={{float: "left", height: "80px", width: "100%", marginTop: "-80px", opacity:"15%", borderRadius: "3rem"}}/>
+            <ProgressBar striped variant="success" animated now={GetPercentage("USA", "Wales")} style={{float: "left", height: "80px", width: "100%", marginTop: "-80px", opacity:"15%", borderRadius: "3rem"}}/>
         </div>
         </Col>
        </Row>

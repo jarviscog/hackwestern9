@@ -5,12 +5,13 @@ from flask import Flask, request
 from pprint import pprint
 from ml_requests import ml_api
 
-app = Flask(__name__)
+application = Flask(__name__)
+
 
 from json import JSONEncoder
 
 
-@app.route('/', methods=['GET'])
+@application.route('/', methods=['GET'])
 def result():
 
     # Gets arguments from the url
@@ -35,8 +36,6 @@ def result():
     #     '0.5':predictions[2]
     # }
 
-
-
     # returnDict['homeTeamWinPercent'] = 0.6
 
     # jsonn = json.dumps(returnDict)
@@ -50,9 +49,9 @@ def result():
     return "Hello"
 
 
-@app.route('/hello')
+@application.route('/hello')
 def hello_world():
     return 'Hello, World!'
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=3000, debug=True)
+    application.run(host='0.0.0.0', port=3000, debug=True)
